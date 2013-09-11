@@ -22,6 +22,8 @@ For this example however,
 
 5) Go to your project build settings tab and under prefix header (found after APPLE LLVM 5.0 language and under) double click and enter the following NAME-OF-YOUR-APP/RevealControllerStoryboardExample-Prefix.pch If you fail to do this, you will run into compile drama.
 
+6) Look at the storyboard example in the original project, and in this project to get a handle on how you would put together your flow path (seques).
+
 Good luck
 
 Mike Petrogeorge
