@@ -18,7 +18,7 @@ For this example however,
 
 3) Study that project, if you haven't already.
 
-4) Copy SWRevealViewController.h, SWRevealViewController.m and RevealControllerStoryboardExample-Prefix.pch into your project. Make sure you place the .pch file under supporting file  folder in your project.
+4) Copy SWRevealViewController.h and SWRevealViewController.m.
 
 5) Look for your project's .pch file. Its usually located in the supporting files folder in X-Code. 
 Add
