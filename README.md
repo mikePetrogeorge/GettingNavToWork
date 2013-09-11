@@ -20,7 +20,13 @@ For this example however,
 
 4) Copy SWRevealViewController.h, SWRevealViewController.m and RevealControllerStoryboardExample-Prefix.pch into your project. Make sure you place the .pch file under supporting file  folder in your project.
 
-5) Go to your project build settings tab and under prefix header (found after APPLE LLVM 5.0 language and under) double click and enter the following NAME-OF-YOUR-APP/RevealControllerStoryboardExample-Prefix.pch If you fail to do this, you will run into compile drama.
+5) Look for your project's .pch file. Its usually located in the supporting files folder in X-Code. 
+Add
+
+#import "SWRevealViewController.h" 
+
+inside the #ifdef __OBJC__ statement. 
+If you fail to do this, you will run into compile drama.
 
 6) Look at the storyboard example in the original project, and in this project to get a handle on how you would put together your flow path (seques).
 
