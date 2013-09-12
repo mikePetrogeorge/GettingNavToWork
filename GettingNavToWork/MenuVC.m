@@ -55,12 +55,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
    
-    // configure the segue.
-    // in this case we dont swap out the front view controller, which is a UINavigationController.
-    // but we could..
+    // here we could pass variables (objects) to the next view through
+    // traditional means.
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSLog(@"%@",[segue.destinationViewController description]);
+    
+    if ( [segue.destinationViewController isKindOfClass: [BlueVC class]] )
+    {
+        NSLog(@"We be going off to blue");
+        NSLog(@"here is where on can pass variables(objects) to next view");
+        BlueVC *blue = (BlueVC *)segue.destinationViewController;
+        
+        blue.passingVariable = appDelegate.passingVariable;
+    }
+    
+    if ( [segue.destinationViewController isKindOfClass: [GreenVC class]] )
+    {
+        NSLog(@"We be going off to green");
+        NSLog(@"here is where on can pass variables(objects) to next view");
+        BlueVC *green = (BlueVC *)segue.destinationViewController;
+        
+        green.passingVariable = appDelegate.passingVariable;
+    }
+
+    
+    NSLog(@"%@", [segue identifier]);
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] )
     {
         SWRevealViewControllerSegue* rvcs = (SWRevealViewControllerSegue*) segue;
@@ -72,9 +97,6 @@
         
         rvcs.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
             
-            //            UINavigationController* nc = (UINavigationController*)rvc.frontViewController;
-            //            [nc setViewControllers: @[ dvc ] animated: NO ];
-            //            [rvc setFrontViewPosition: FrontViewPositionLeft animated: YES];
             
             UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:dvc];
             [rvc setFrontViewController:nc animated:YES];

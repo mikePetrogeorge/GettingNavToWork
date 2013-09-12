@@ -27,8 +27,13 @@
 
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface PinkVuController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
+@property (strong, nonatomic) NSString *passingVariable;
 
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender;
+- (void) doBrinUpMenu:(id)sender;
+- (void)viewWillAppear:(BOOL)animated;
 @end

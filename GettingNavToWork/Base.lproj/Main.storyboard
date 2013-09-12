@@ -56,7 +56,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="J4x-vO-hMl" kind="custom" customClass="SWRevealViewControllerSegue" id="KM3-3m-EML"/>
+                                    <segue destination="J4x-vO-hMl" kind="custom" identifier="Pink" customClass="SWRevealViewControllerSegue" id="KM3-3m-EML"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNH-Tk-ZIc">
@@ -68,7 +68,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Dpo-o5-bad" kind="custom" customClass="SWRevealViewControllerSegue" id="a5w-cq-GHn"/>
+                                    <segue destination="Dpo-o5-bad" kind="custom" identifier="Blue" customClass="SWRevealViewControllerSegue" id="a5w-cq-GHn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZe-Zd-oh4">
@@ -80,7 +80,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6cv-xY-xNh" kind="custom" customClass="SWRevealViewControllerSegue" id="2TB-aD-n32"/>
+                                    <segue destination="6cv-xY-xNh" kind="custom" identifier="green" customClass="SWRevealViewControllerSegue" id="2TB-aD-n32"/>
                                 </connections>
                             </button>
                         </subviews>

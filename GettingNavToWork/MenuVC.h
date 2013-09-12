@@ -27,6 +27,9 @@
 
 
 #import <UIKit/UIKit.h>
+#import "BlueVC.h"
+#import "GreenVC.h"
+#import "AppDelegate.h"
 
 @interface MenuVC : UIViewController
 

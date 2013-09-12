@@ -27,8 +27,11 @@
 
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface BlueVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
+@property (strong, nonatomic) NSString *passingVariable;
+- (void) doBrinUpMenu:(id)sender;
 
 @end

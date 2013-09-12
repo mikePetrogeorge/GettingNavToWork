@@ -45,8 +45,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self.revealButtonItem setTarget: self.revealViewController];
-    [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     //early version of xcode5 would default the navaigation item
     // on the right and I could not figure out how to get it to the left.
@@ -57,6 +55,22 @@
     
     self.navigationItem.leftBarButtonItem =_revealButtonItem;
     self.navigationItem.rightBarButtonItem = nil;
+    
+    // there are times where you need to pass variables to different views
+    // Normal channels call for passing it through prepare for seque.
+    // however, in this example prepare for seque is only available on
+    // the menu view controller. So, we put the passing variable into the
+    // app delegate then call our action top bring up the menu
+    // on the prepareforseque method in MenuViewController, it will get
+    // the variable out of the app delegate and pass it on to the next view
+    
+    //_passingVariable = @"should be getting this from viewWillApear";
+    
+    // Here we tell revealButtonItem that when pressed perform doBrinUpMenu
+    // where it puts the passed variable into the app delegate, then
+    // calls the code to move the view to the side and show the menu.
+    [self.revealButtonItem setTarget:self];
+    [self.revealButtonItem setAction:@selector(doBrinUpMenu:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +78,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"loading blue %@", self.passingVariable);
+    self.passingVariable = @"comming from blue";
+}
+
+
+- (void) doBrinUpMenu:(id)sender;
+{
+    NSLog(@"do bring up menu -> blue");
+    // ge the app delegate and pass in the variable
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    appDelegate.passingVariable = _passingVariable;
+    
+    // call the code that slides the menu.
+    [[self revealViewController] revealToggle:self.revealButtonItem];
+}
+
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {

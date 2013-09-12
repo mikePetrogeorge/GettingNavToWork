@@ -46,16 +46,51 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.revealButtonItem setTarget: self.revealViewController];
-    [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
+    // there are times where you need to pass variables to different views
+    // Normal channels call for passing it through prepare for seque.
+    // however, in this example prepare for seque is only available on
+    // the menu view controller. So, we put the passing variable into the
+    // app delegate then call our action top bring up the menu
+    // on the prepareforseque method in MenuViewController, it will get
+    // the variable out of the app delegate and pass it on to the next view
+    
+    
+    // _passingVariable = @"We will set this up in viewWillAppear"
+    
+    // we tell revealButtonItem that when pressed perform doBrinUpMenu
+    // where it puts the passed variable into the app delegate, then
+    // calls the code to move the view to the side and show the menu.
+    
+    [self.revealButtonItem setTarget:self];
+    [self.revealButtonItem setAction:@selector(doBrinUpMenu:)];
+  
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"loading pink %@", self.passingVariable);
+    self.passingVariable = @"Comming from Pink";
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) doBrinUpMenu:(id)sender;
+{
+    NSLog(@"do bring up menu  ->> pink");
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    appDelegate.passingVariable = _passingVariable;
+
+    [[self revealViewController] revealToggle:self.revealButtonItem];
+}
+
+
 
 @end
